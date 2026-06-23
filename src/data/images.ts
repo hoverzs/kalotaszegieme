@@ -46,6 +46,7 @@ export const congregationPhotos: Record<string, string> = {
   kozeplak: "/images/congregations/kozeplak.png",
   magyarbikal: "/images/congregations/magyarbikal.png",
   magyarkapus: "/images/congregations/magyarkapus.png",
+  magyarkiskapus: "/images/congregations/magyarkiskapus.png",
   magyarokerek: "/images/congregations/magyarokerek.png",
   makofalva: "/images/congregations/makofalva.png",
   mera: "/images/congregations/mera.png",
