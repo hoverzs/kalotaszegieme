@@ -5,7 +5,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { ContactBlock } from "@/components/ContactBlock";
 import { ArrowRightIcon, BookIcon, ChurchIcon, UsersIcon } from "@/components/Icons";
 import { getCongregations } from "@/lib/content/congregations";
-import { churchImages } from "@/data/images";
+import { congregationPhotos } from "@/data/images";
 
 export const metadata: Metadata = {
   title: "Az egyházmegye",
@@ -34,8 +34,8 @@ export default async function DiocesePage() {
           <div className="lg:col-span-2">
             <div className="relative mb-8 aspect-[16/9] overflow-hidden rounded-2xl shadow-card">
               <Image
-                src={churchImages.archesInterior}
-                alt="Kalotaszegi református templom belső tere"
+                src={congregationPhotos.banffyhunyad}
+                alt="Bánffyhunyadi református templom"
                 fill
                 sizes="(max-width: 1024px) 100vw, 66vw"
                 className="object-cover"

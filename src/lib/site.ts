@@ -56,7 +56,6 @@ export const mainNav: NavItem[] = [
   { label: "Gyülekezetek", href: "/gyulekezetek" },
   { label: "Események", href: "/esemenyek" },
   { label: "Tudósítások", href: "/tudositasok" },
-  { label: "Média", href: "/media" },
   { label: "Kapcsolat", href: "/elerhetoseg" },
 ];
 

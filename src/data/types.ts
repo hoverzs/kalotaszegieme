@@ -19,8 +19,6 @@ export type DocumentCategory =
   | "Szabályzatok"
   | "Konferenciaanyagok";
 
-export type MediaType = "Videó" | "Hanganyag" | "Előadás";
-
 /**
  * Egy gyülekezet (egyházközség) adatai.
  *
@@ -127,20 +125,6 @@ export interface DocumentItem {
   fileType: string;
   fileSize: string;
   /** Letöltési hely (statikus prototípusban placeholder). */
-  url: string;
-  description?: string;
-}
-
-/** Médiatartalom (videó / hang / előadás). */
-export interface MediaItem {
-  id: string;
-  title: string;
-  type: MediaType;
-  date: string;
-  speaker?: string;
-  duration?: string;
-  thumbnail: string;
-  /** Külső link (YouTube, hangfájl stb.). */
   url: string;
   description?: string;
 }

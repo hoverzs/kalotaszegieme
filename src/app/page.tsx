@@ -16,7 +16,11 @@ import {
   ArrowRightIcon,
 } from "@/components/Icons";
 import { getCongregations } from "@/lib/content/congregations";
-import { churchImages, landscapeImages, localImages } from "@/data/images";
+import {
+  congregationGalleryImages,
+  featuredGallerySlugs,
+  localImages,
+} from "@/data/images";
 
 const quickAccess = [
   { label: "Gyülekezetek", href: "/gyulekezetek", icon: ChurchIcon },
@@ -28,13 +32,10 @@ const quickAccess = [
 
 export default async function HomePage() {
   const congregations = await getCongregations();
-  // Illusztratív képek (a gyülekezeti fotók feltöltése folyamatban) – a
-  // szekció a Templomgaléria oldalra vezet.
-  const galleryImages = [
-    { src: churchImages.stainedGlass, caption: "Kalotaszeg", subcaption: "Templombelső", href: "/templomgaleria" },
-    { src: landscapeImages.greenHills, caption: "Kalotaszeg", subcaption: "Dombvidék", href: "/templomgaleria" },
-    { src: churchImages.townscapeSpire, caption: "Kalotaszeg", subcaption: "Templomtorony", href: "/templomgaleria" },
-  ];
+  const galleryImages = congregationGalleryImages(congregations, {
+    slugs: featuredGallerySlugs,
+    limit: 3,
+  });
 
   return (
     <>
