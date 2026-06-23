@@ -60,6 +60,12 @@ export const seedCongregations: Congregation[] = [
     latitude: 46.8333,
     longitude: 23.1667,
     ...EMPTY,
+    pastor: "Balázs Gergő",
+    address: "Bogártelke 159",
+    phone: "0785-993760",
+    email: "gergobalazs8@yahoo.com",
+    membership: 196,
+    totalMembership: 196,
     description:
       "Bogártelke (Băgara) a Nádas-menti Kalotaszeg egyik települése, Kolozs megyében. Lakossága a reformáció óta református; gyülekezete a kalotaszegi egyházmegyéhez tartozik. Református templomát eredetileg 1509-ben emelték gótikus stílusban Szent László tiszteletére, a falu birtokosa Bojár János adományából. A katolikusok 1741-től 45 éven át használták, majd II. József visszaítélte a reformátusoknak. A 2008-tól tartó felújítások során kiderült, hogy az épület késő Árpád-kori eredetű rétegeket, falképeket és ritka kőből készült szentélyboltívet is őriz; az eddig feltételezett 1509-es dátumot a szakemberek késő Árpád-korra javították. A belső teret 1794-ben festett kazettás mennyezet díszíti Simon György munkájában, 79 kazettával. A felújítás során megújult az orgona, a szószék, a harangzat és a templomkert kerítése is. A templom a romániai műemlékjegyzékben szerepel (CJ-II-m-B-07525); Bogártelke a Nádas-menti falvak között a gazdagon díszített portáiról is ismert.",
   },
