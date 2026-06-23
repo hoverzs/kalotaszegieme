@@ -23,7 +23,7 @@ export const seedEvents: EventItem[] = [
     slug: "ifjusagi-tabor-2026",
     title: "Kalotaszegi egyházmegyei ifjúsági tábor",
     date: "2026-07-21",
-    location: "Kalotaszeg",
+    location: "Algyógy",
     organizer: "Kalotaszegi Református Egyházmegye",
     description:
       "2026. július 21–25. · Felhívás a 14–18 éves fiataloknak. Jelentkezés és részletek az egyházmegyei hivatalnál.",
