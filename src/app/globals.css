@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "leaflet/dist/leaflet.css";
+
 :root {
   --background: #f7f3ec;
   --foreground: #1f2125;
@@ -75,5 +77,86 @@
   .card {
     @apply overflow-hidden rounded-2xl border border-cream-300/60 bg-white shadow-card
       transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover;
+  }
+
+  /* Antik atlasz térkép – Leaflet */
+  .map-atlas-inner .leaflet-container {
+    @apply bg-cream-200 font-sans;
+  }
+
+  .map-atlas-inner .leaflet-tile-pane {
+    filter: sepia(0.22) saturate(0.82) brightness(1.04) contrast(0.92);
+  }
+
+  .map-atlas-inner .leaflet-control-attribution {
+    @apply rounded-md border border-cream-300/60 bg-cream-50/90 text-[10px] text-graphite-500;
+    margin: 8px !important;
+    padding: 2px 6px !important;
+  }
+
+  .congregation-map-marker {
+    background: transparent !important;
+    border: none !important;
+  }
+
+  .congregation-map-marker__pin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .congregation-map-marker__core {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border-radius: 9999px;
+    background: #6e1423;
+    border: 2px solid #fbf9f4;
+    box-shadow:
+      0 0 0 1px #b8924a,
+      0 3px 10px rgba(110, 20, 35, 0.35);
+    transition: transform 0.2s ease;
+  }
+
+  .congregation-map-marker:hover .congregation-map-marker__core {
+    transform: scale(1.12);
+  }
+
+  .congregation-map-marker__stem {
+    display: block;
+    width: 2px;
+    height: 8px;
+    margin-top: -1px;
+    background: linear-gradient(#6e1423, #5a101c);
+  }
+
+  .leaflet-popup.congregation-map-popup .leaflet-popup-content-wrapper {
+    @apply rounded-xl border border-gold-200/80 bg-cream-50 px-0 py-0 shadow-card;
+  }
+
+  .leaflet-popup.congregation-map-popup .leaflet-popup-content {
+    margin: 0;
+    min-width: 180px;
+  }
+
+  .leaflet-popup.congregation-map-popup .leaflet-popup-tip {
+    @apply bg-cream-50;
+    box-shadow: none;
+  }
+
+  .congregation-map-popup__inner {
+    @apply px-4 py-3;
+  }
+
+  .congregation-map-popup__title {
+    @apply font-serif text-sm font-semibold leading-snug text-graphite-900;
+  }
+
+  .congregation-map-popup__settlement {
+    @apply mt-1 text-xs text-graphite-500;
+  }
+
+  .congregation-map-popup__link {
+    @apply mt-3 inline-flex text-xs font-semibold text-burgundy-500 transition-colors hover:text-burgundy-700;
   }
 }

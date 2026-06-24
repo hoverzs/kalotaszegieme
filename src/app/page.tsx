@@ -86,32 +86,24 @@ export default async function HomePage() {
       <LatestTudositasokSection />
 
       {/* Gyülekezetek a térképen */}
-      <section className="bg-graphite-900 py-16">
+      <section className="border-t border-cream-300/60 bg-cream-50 py-14 sm:py-16">
         <div className="container-page">
           <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center">
             <div>
-              <span className="mb-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest2 text-gold-400">
-                <span className="h-px w-6 bg-gold-400" />
-                Térkép
+              <span className="eyebrow mb-3">
+                <span className="h-px w-6 bg-gold-500" />
+                Kalotaszeg
               </span>
-              <h2 className="text-3xl font-semibold leading-tight text-cream-50 sm:text-4xl">
-                Gyülekezeteink a térképen
+              <h2 className="text-3xl font-semibold leading-tight text-graphite-900 sm:text-4xl">
+                Térkép
               </h2>
-              <p className="mt-5 max-w-lg text-base leading-relaxed text-cream-200/70">
-                Fedezze fel a kalotaszegi gyülekezeteket Felszegtől Alszegig, a Nádas mentéig.
-                Kattintson egy pontra a részletes adatlapért. Az interaktív, OpenStreetMap-alapú
-                térkép hamarosan elérhető lesz.
+              <p className="mt-5 max-w-lg text-base leading-relaxed text-graphite-600">
+                Fedezze fel a Kalotaszegi Református Egyházmegye gyülekezeteit térképen.
               </p>
-              <div className="mt-7 flex flex-wrap gap-4">
+              <div className="mt-7">
                 <Link href="/terkep" className="btn-primary">
-                  Térkép megnyitása
+                  Részletes térkép megnyitása
                   <ArrowRightIcon className="h-4 w-4" />
-                </Link>
-                <Link
-                  href="/gyulekezetek"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-cream-50/30 px-6 py-3 text-sm font-medium text-cream-50 transition-colors hover:bg-cream-50/10"
-                >
-                  Gyülekezetek listája
                 </Link>
               </div>
             </div>

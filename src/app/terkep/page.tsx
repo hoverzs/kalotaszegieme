@@ -8,7 +8,7 @@ import { getCongregations } from "@/lib/content/congregations";
 export const metadata: Metadata = {
   title: "Térkép",
   description:
-    "A kalotaszegi református gyülekezetek elhelyezkedése térképen (előkészítve OpenStreetMap / Leaflet integrációra).",
+    "A kalotaszegi református gyülekezetek elhelyezkedése interaktív térképen.",
 };
 
 export default async function MapPage() {
@@ -22,12 +22,15 @@ export default async function MapPage() {
       <PageHeader
         eyebrow="Tájékozódás"
         title="Térkép"
-        description="Gyülekezeteink elhelyezkedése Kalotaszeg tájain. Az interaktív, OpenStreetMap-alapú térkép hamarosan elérhető lesz."
+        description="Fedezze fel a Kalotaszegi Református Egyházmegye gyülekezeteit térképen."
         breadcrumbs={[{ label: "Főoldal", href: "/" }, { label: "Térkép" }]}
       />
 
       <section className="container-page py-16">
-        <MapPreview congregations={sorted} height="h-[560px]" />
+        <MapPreview
+          congregations={sorted}
+          mapHeightClass="h-[340px] sm:h-[480px] lg:h-[560px]"
+        />
 
         <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {sorted.map((c) => (
@@ -55,14 +58,6 @@ export default async function MapPage() {
               </span>
             </Link>
           ))}
-        </div>
-
-        <div className="mt-10 rounded-2xl border border-dashed border-cream-300 bg-cream-50 p-6 text-sm text-graphite-500">
-          <strong className="font-semibold text-graphite-700">Fejlesztői megjegyzés:</strong>{" "}
-          A gyülekezetek mintaadatai tartalmaznak <code>latitude</code> és{" "}
-          <code>longitude</code> mezőket, így a térkép később közvetlenül lecserélhető
-          interaktív OpenStreetMap + Leaflet megjelenítésre, a komponens prop-felületének
-          megtartásával.
         </div>
       </section>
     </>
