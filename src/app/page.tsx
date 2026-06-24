@@ -78,20 +78,6 @@ export default async function HomePage() {
         <div className="w-full px-3 sm:px-5 lg:px-8">
           <MapPreview congregations={congregations} variant="featured" />
         </div>
-
-        <div className="container-page mt-8 sm:mt-10 lg:mt-12">
-          <span className="eyebrow mb-4">
-            <span className="h-px w-6 bg-gold-500" />
-            Kalotaszeg
-          </span>
-          <h2 className="text-4xl font-semibold leading-tight text-graphite-900 sm:text-[2.75rem] lg:text-5xl">
-            Térkép
-          </h2>
-          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-graphite-600 sm:text-xl">
-            A Kalotaszegi Református Egyházmegye gyülekezetei Bánffyhunyadtól Kolozsvár
-            környékéig rajzolják ki Kalotaszeg református közösségi hálózatát.
-          </p>
-        </div>
       </section>
 
       <UpcomingEventsSection />
