@@ -88,9 +88,10 @@ export function CongregationCard({ congregation: c }: { congregation: Congregati
       <div className="flex flex-1 flex-col p-5">
         <h3 className="font-serif text-xl font-semibold leading-snug text-graphite-900">
           <Link href={href} className="transition-colors hover:text-burgundy-600">
-            {c.name}
+            {c.settlement}
           </Link>
         </h3>
+        <p className="mt-1 text-sm leading-snug text-graphite-600">{c.name}</p>
         {c.romanianName ? (
           <p className="mt-1 text-xs text-graphite-400">{c.romanianName}</p>
         ) : null}
