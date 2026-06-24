@@ -46,7 +46,7 @@ export function Hero({
   return (
     <section
       className={`relative isolate flex w-full flex-col overflow-hidden ${
-        isFull ? "min-h-[46vh] lg:min-h-[50vh]" : "min-h-[44vh] justify-center"
+        isFull ? "min-h-[38vh] sm:min-h-[40vh] lg:min-h-[44vh]" : "min-h-[44vh] justify-center"
       }`}
     >
       <Image
@@ -55,12 +55,12 @@ export function Hero({
         fill
         priority
         sizes="100vw"
-        className={`object-cover ${isFull ? "object-[center_42%]" : "object-center"}`}
+        className={`object-cover ${isFull ? "object-[center_52%]" : "object-center"}`}
       />
       <div className="absolute inset-0 bg-hero-overlay" />
       <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-gold-400/10" />
 
-      <div className="relative z-10 flex flex-1 flex-col">
+      <div className={`relative z-10 flex flex-col ${hasTopBanner ? "" : "flex-1"}`}>
         {hasTopBanner && (
           <aside className="w-full border-b border-cream-50/10 bg-graphite-900/55 backdrop-blur-md">
             <div className="container-page py-2.5 sm:py-3">
@@ -85,8 +85,8 @@ export function Hero({
         )}
 
         <div
-          className={`container-page flex flex-1 flex-col justify-end ${
-            hasTopBanner ? "pb-8 pt-4 sm:pb-10 sm:pt-5" : "justify-center py-20"
+          className={`container-page flex flex-col ${
+            hasTopBanner ? "pb-6 pt-3 sm:pb-8 sm:pt-4" : "flex-1 justify-center py-20"
           }`}
         >
           <div className={`max-w-3xl ${isFull ? "animate-fade-up" : ""}`}>

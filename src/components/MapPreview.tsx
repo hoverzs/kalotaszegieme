@@ -140,8 +140,8 @@ export function MapPreview({
       ? "h-[240px] sm:h-[300px] md:h-[340px] lg:h-[400px]"
       : "h-[300px] sm:h-[360px] lg:h-[420px]");
 
-  const fitPadding: [number, number] = isFeatured ? [28, 28] : [56, 56];
-  const boundsPad = isFeatured ? 0.05 : 0.1;
+  const fitPadding: [number, number] = isFeatured ? [18, 18] : [56, 56];
+  const boundsPad = isFeatured ? 0.025 : 0.1;
 
   return (
     <div className={`map-atlas-card relative w-full ${isFeatured ? "map-atlas-card--featured" : ""}`}>
@@ -245,7 +245,7 @@ export function MapPreview({
             className="relative z-0 h-full w-full"
             boundsPad={boundsPad}
             fitPadding={fitPadding}
-            maxZoom={isFeatured ? 12 : 11}
+            maxZoom={isFeatured ? 13 : 11}
           />
 
           {isFeatured && (
