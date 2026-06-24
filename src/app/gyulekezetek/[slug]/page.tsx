@@ -21,6 +21,8 @@ import {
 } from "@/components/Icons";
 import { isMissing, labels, orPlaceholder, splitValues } from "@/lib/site";
 
+export const revalidate = 3600;
+
 export async function generateStaticParams() {
   const slugs = await getAllCongregationSlugs();
   return slugs.map((slug) => ({ slug }));

@@ -9,6 +9,8 @@ export const metadata: Metadata = {
     "A Kalotaszegi Református Egyházmegye gyülekezetei – kereshető lista templomképekkel és adatlapokkal.",
 };
 
+export const revalidate = 3600;
+
 export default async function CongregationsPage() {
   const congregations = await getCongregations();
   const sorted = [...congregations].sort((a, b) =>

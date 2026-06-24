@@ -18,6 +18,11 @@ const nextConfig = {
         destination: "/gyulekezetek/nyarszo",
         permanent: true,
       },
+      {
+        source: "/gyulekezetek/kalotadamos-jakotelke",
+        destination: "/gyulekezetek/kalotadamos",
+        permanent: true,
+      },
     ];
   },
   images: {
