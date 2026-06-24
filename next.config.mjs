@@ -13,6 +13,11 @@ const nextConfig = {
         destination: "/tudositasok",
         permanent: true,
       },
+      {
+        source: "/gyulekezetek/nyarszo-sarvasar",
+        destination: "/gyulekezetek/nyarszo",
+        permanent: true,
+      },
     ];
   },
   images: {
