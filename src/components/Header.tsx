@@ -37,7 +37,7 @@ export function Header() {
           : "border-cream-300/70 bg-cream-100"
       }`}
     >
-      <div className="container-page flex h-16 items-center justify-between gap-4 sm:h-[4.25rem] lg:justify-center">
+      <div className="container-page flex h-[4.25rem] items-center justify-between gap-4 sm:h-[4.75rem] lg:justify-center">
         <Link
           href="/"
           className="font-serif text-base font-semibold leading-tight text-burgundy-600 lg:hidden"
@@ -45,14 +45,14 @@ export function Header() {
           {siteConfig.shortName}
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex" aria-label="Fő navigáció">
+        <nav className="hidden items-center gap-1.5 lg:flex" aria-label="Fő navigáció">
           {mainNav.map((item) => {
             const active = isActive(pathname, item.href);
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative rounded-full px-4 py-2.5 text-[15px] font-semibold leading-snug transition-colors ${
+                className={`relative rounded-full px-4 py-3 text-[17px] font-semibold leading-snug transition-colors ${
                   active
                     ? "text-burgundy-600"
                     : "text-graphite-700 hover:text-burgundy-600"
@@ -69,7 +69,7 @@ export function Header() {
           <div className="group relative">
             <button
               type="button"
-              className={`relative inline-flex items-center gap-1.5 rounded-full px-4 py-2.5 text-[15px] font-semibold leading-snug transition-colors ${
+              className={`relative inline-flex items-center gap-1.5 rounded-full px-4 py-3 text-[17px] font-semibold leading-snug transition-colors ${
                 moreActive
                   ? "text-burgundy-600"
                   : "text-graphite-700 hover:text-burgundy-600"
@@ -90,7 +90,7 @@ export function Header() {
                     <Link
                       key={item.href}
                       href={item.href}
-                      className={`block rounded-xl px-4 py-3 text-[15px] font-semibold leading-snug transition-colors ${
+                      className={`block rounded-xl px-4 py-3 text-base font-semibold leading-snug transition-colors ${
                         active
                           ? "bg-burgundy-50 text-burgundy-600"
                           : "text-graphite-700 hover:bg-cream-100 hover:text-burgundy-600"
