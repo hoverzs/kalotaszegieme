@@ -37,30 +37,30 @@ export function Header() {
           : "border-cream-300/70 bg-cream-100"
       }`}
     >
-      <div className="container-page flex h-14 items-center justify-between gap-4 sm:h-16 lg:justify-center">
+      <div className="container-page flex h-16 items-center justify-between gap-4 sm:h-[4.25rem] lg:justify-center">
         <Link
           href="/"
-          className="font-serif text-sm font-semibold leading-tight text-burgundy-600 lg:hidden"
+          className="font-serif text-base font-semibold leading-tight text-burgundy-600 lg:hidden"
         >
           {siteConfig.shortName}
         </Link>
 
-        <nav className="hidden items-center gap-0.5 lg:flex" aria-label="Fő navigáció">
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Fő navigáció">
           {mainNav.map((item) => {
             const active = isActive(pathname, item.href);
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`relative rounded-full px-3 py-2 text-[13px] font-medium transition-colors ${
+                className={`relative rounded-full px-4 py-2.5 text-[15px] font-semibold leading-snug transition-colors ${
                   active
                     ? "text-burgundy-600"
-                    : "text-graphite-600 hover:text-burgundy-600"
+                    : "text-graphite-700 hover:text-burgundy-600"
                 }`}
               >
                 {item.label}
                 {active && (
-                  <span className="absolute inset-x-3 -bottom-px h-0.5 rounded-full bg-gold-500" />
+                  <span className="absolute inset-x-4 -bottom-px h-0.5 rounded-full bg-gold-500" />
                 )}
               </Link>
             );
@@ -69,31 +69,31 @@ export function Header() {
           <div className="group relative">
             <button
               type="button"
-              className={`relative inline-flex items-center gap-1 rounded-full px-3 py-2 text-[13px] font-medium transition-colors ${
+              className={`relative inline-flex items-center gap-1.5 rounded-full px-4 py-2.5 text-[15px] font-semibold leading-snug transition-colors ${
                 moreActive
                   ? "text-burgundy-600"
-                  : "text-graphite-600 hover:text-burgundy-600"
+                  : "text-graphite-700 hover:text-burgundy-600"
               }`}
               aria-haspopup="true"
             >
               Továbbiak
-              <ChevronDownIcon className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" />
+              <ChevronDownIcon className="h-4 w-4 transition-transform group-hover:rotate-180" />
               {moreActive && (
-                <span className="absolute inset-x-3 -bottom-px h-0.5 rounded-full bg-gold-500" />
+                <span className="absolute inset-x-4 -bottom-px h-0.5 rounded-full bg-gold-500" />
               )}
             </button>
             <div className="invisible absolute right-0 top-full pt-2 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-              <div className="w-52 overflow-hidden rounded-2xl border border-cream-300/70 bg-white p-1.5 shadow-premium">
+              <div className="w-56 overflow-hidden rounded-2xl border border-cream-300/70 bg-white p-2 shadow-premium">
                 {moreNav.map((item) => {
                   const active = isActive(pathname, item.href);
                   return (
                     <Link
                       key={item.href}
                       href={item.href}
-                      className={`block rounded-xl px-3.5 py-2.5 text-[13px] font-medium transition-colors ${
+                      className={`block rounded-xl px-4 py-3 text-[15px] font-semibold leading-snug transition-colors ${
                         active
                           ? "bg-burgundy-50 text-burgundy-600"
-                          : "text-graphite-600 hover:bg-cream-100 hover:text-burgundy-600"
+                          : "text-graphite-700 hover:bg-cream-100 hover:text-burgundy-600"
                       }`}
                     >
                       {item.label}
@@ -108,7 +108,7 @@ export function Header() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-cream-300 text-graphite-700 transition-colors hover:bg-cream-200 lg:hidden"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-cream-300 text-graphite-700 transition-colors hover:bg-cream-200 lg:hidden"
           aria-label={open ? "Menü bezárása" : "Menü megnyitása"}
           aria-expanded={open}
         >
@@ -121,18 +121,18 @@ export function Header() {
           open ? "max-h-[720px]" : "max-h-0"
         }`}
       >
-        <div className="container-page py-4">
-          <nav className="grid grid-cols-1 gap-1 sm:grid-cols-2" aria-label="Mobil navigáció">
+        <div className="container-page py-5">
+          <nav className="grid grid-cols-1 gap-1.5 sm:grid-cols-2" aria-label="Mobil navigáció">
             {mainNav.map((item) => {
               const active = isActive(pathname, item.href);
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`rounded-xl px-4 py-3 text-sm font-medium transition-colors ${
+                  className={`rounded-xl px-4 py-3.5 text-base font-semibold leading-snug transition-colors ${
                     active
                       ? "bg-burgundy-50 text-burgundy-600"
-                      : "text-graphite-700 hover:bg-cream-200"
+                      : "text-graphite-800 hover:bg-cream-200"
                   }`}
                 >
                   {item.label}
@@ -141,20 +141,20 @@ export function Header() {
             })}
           </nav>
 
-          <p className="mb-1 mt-4 px-4 text-[11px] font-semibold uppercase tracking-widest2 text-graphite-400">
+          <p className="mb-1.5 mt-5 px-4 text-xs font-semibold uppercase tracking-widest2 text-graphite-400">
             Továbbiak
           </p>
-          <nav className="grid grid-cols-1 gap-1 sm:grid-cols-2" aria-label="További menüpontok">
+          <nav className="grid grid-cols-1 gap-1.5 sm:grid-cols-2" aria-label="További menüpontok">
             {moreNav.map((item) => {
               const active = isActive(pathname, item.href);
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`rounded-xl px-4 py-3 text-sm font-medium transition-colors ${
+                  className={`rounded-xl px-4 py-3.5 text-base font-semibold leading-snug transition-colors ${
                     active
                       ? "bg-burgundy-50 text-burgundy-600"
-                      : "text-graphite-700 hover:bg-cream-200"
+                      : "text-graphite-800 hover:bg-cream-200"
                   }`}
                 >
                   {item.label}
