@@ -22,9 +22,16 @@ function PopupContent({ congregation }: { congregation: MappableCongregation }) 
 export function CongregationMapClient({
   congregations,
   className = "h-full w-full",
+  boundsPad = 0.1,
+  fitPadding = [56, 56] as [number, number],
+  maxZoom = 11,
 }: {
   congregations: Congregation[];
   className?: string;
+  /** Bounds enyhén tágítása, hogy a markerek ne szoruljanak a szélre. */
+  boundsPad?: number;
+  fitPadding?: [number, number];
+  maxZoom?: number;
 }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const popupRootsRef = useRef<Root[]>([]);
@@ -93,7 +100,8 @@ export function CongregationMapClient({
       if (points.length === 1) {
         map.setView(points[0], 12);
       } else {
-        map.fitBounds(L.latLngBounds(points), { padding: [44, 44], maxZoom: 12 });
+        const bounds = L.latLngBounds(points).pad(boundsPad);
+        map.fitBounds(bounds, { padding: fitPadding, maxZoom });
       }
     })();
 
@@ -104,7 +112,7 @@ export function CongregationMapClient({
       map?.remove();
       map = null;
     };
-  }, [mappable]);
+  }, [mappable, boundsPad, fitPadding, maxZoom]);
 
   if (mappable.length === 0) {
     return (

@@ -80,6 +80,40 @@
   }
 
   /* Antik atlasz térkép – Leaflet */
+  .map-atlas-parchment {
+    background-image:
+      radial-gradient(circle at 50% 0%, rgba(251, 249, 244, 0.9), transparent 55%),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(184, 146, 74, 0.03) 3px,
+        rgba(184, 146, 74, 0.03) 4px
+      );
+  }
+
+  .map-atlas-vignette {
+    box-shadow:
+      inset 0 0 90px rgba(31, 33, 37, 0.14),
+      inset 0 0 140px rgba(110, 20, 35, 0.07);
+  }
+
+  .map-atlas-card--featured {
+    filter: drop-shadow(0 28px 48px rgba(110, 20, 35, 0.08));
+  }
+
+  .map-section-cta {
+    box-shadow:
+      0 1px 0 rgba(251, 249, 244, 0.15) inset,
+      0 8px 24px rgba(110, 20, 35, 0.22);
+  }
+
+  .map-section-cta:hover {
+    box-shadow:
+      0 1px 0 rgba(251, 249, 244, 0.15) inset,
+      0 12px 32px rgba(110, 20, 35, 0.28);
+  }
+
   .map-atlas-inner .leaflet-container {
     @apply bg-cream-200 font-sans;
   }
@@ -114,12 +148,36 @@
     border: 2px solid #fbf9f4;
     box-shadow:
       0 0 0 1px #b8924a,
-      0 3px 10px rgba(110, 20, 35, 0.35);
-    transition: transform 0.2s ease;
+      0 0 10px rgba(184, 146, 74, 0.35),
+      0 4px 14px rgba(110, 20, 35, 0.38);
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
   }
 
   .congregation-map-marker:hover .congregation-map-marker__core {
-    transform: scale(1.12);
+    transform: scale(1.14);
+    box-shadow:
+      0 0 0 1px #c49f52,
+      0 0 16px rgba(184, 146, 74, 0.5),
+      0 6px 18px rgba(110, 20, 35, 0.45);
+    animation: map-marker-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes map-marker-pulse {
+    0%,
+    100% {
+      box-shadow:
+        0 0 0 1px #c49f52,
+        0 0 14px rgba(184, 146, 74, 0.45),
+        0 6px 18px rgba(110, 20, 35, 0.42);
+    }
+    50% {
+      box-shadow:
+        0 0 0 1px #d2af63,
+        0 0 20px rgba(184, 146, 74, 0.55),
+        0 6px 20px rgba(110, 20, 35, 0.48);
+    }
   }
 
   .congregation-map-marker__stem {

@@ -9,7 +9,7 @@ const CongregationMapClient = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="flex h-full min-h-[260px] items-center justify-center bg-cream-200/90">
+      <div className="flex h-full min-h-[320px] items-center justify-center bg-cream-200/90">
         <span className="text-sm text-graphite-400">Térkép betöltése…</span>
       </div>
     ),
@@ -70,11 +70,13 @@ function SteampunkCorner({ className }: { className?: string }) {
  */
 export function MapPreview({
   congregations,
-  mapHeightClass = "h-[300px] sm:h-[360px] lg:h-[420px]",
+  variant = "default",
+  mapHeightClass,
   showBadge = true,
 }: {
   congregations: Congregation[];
-  /** Tailwind magasság osztályok a térképhez (pl. főoldal vs. /terkep). */
+  /** Főoldali kiemelt megjelenés vagy alapértelmezett. */
+  variant?: "featured" | "default";
   mapHeightClass?: string;
   showBadge?: boolean;
 }) {
@@ -82,41 +84,86 @@ export function MapPreview({
     (c) => c.latitude !== null && c.longitude !== null,
   ).length;
 
+  const isFeatured = variant === "featured";
+  const heightClass =
+    mapHeightClass ??
+    (isFeatured
+      ? "h-[360px] sm:h-[460px] lg:h-[580px] xl:h-[620px]"
+      : "h-[300px] sm:h-[360px] lg:h-[420px]");
+
+  const fitPadding: [number, number] = isFeatured ? [72, 72] : [56, 56];
+  const boundsPad = isFeatured ? 0.14 : 0.1;
+
   return (
-    <div className="map-atlas-card relative">
+    <div className={`map-atlas-card relative ${isFeatured ? "map-atlas-card--featured" : ""}`}>
       <div
-        className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-gold-400/25 via-transparent to-burgundy-500/10 p-px"
+        className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-gold-400/30 via-transparent to-burgundy-500/10 p-px"
         aria-hidden
       />
 
-      <div className="relative overflow-hidden rounded-2xl border border-gold-300/45 bg-gradient-to-br from-cream-50 via-cream-100 to-cream-200 p-2 shadow-premium sm:p-3">
+      <div
+        className={`relative overflow-hidden rounded-3xl border bg-gradient-to-br from-cream-50 via-cream-100 to-cream-200 shadow-premium ${
+          isFeatured
+            ? "border-gold-300/55 p-3 sm:p-4 lg:p-5"
+            : "border-gold-300/45 p-2 sm:p-3"
+        }`}
+      >
+        <div className="map-atlas-parchment pointer-events-none absolute inset-0 opacity-40" aria-hidden />
         <div
           className="pointer-events-none absolute inset-0 opacity-[0.35]"
           style={{
             backgroundImage:
-              "radial-gradient(circle at 20% 15%, rgba(184,146,74,0.12), transparent 42%), radial-gradient(circle at 85% 80%, rgba(110,20,35,0.08), transparent 45%)",
+              "radial-gradient(circle at 20% 15%, rgba(184,146,74,0.14), transparent 42%), radial-gradient(circle at 85% 80%, rgba(110,20,35,0.09), transparent 45%)",
           }}
           aria-hidden
         />
 
-        <CompassRose className="pointer-events-none absolute right-3 top-3 z-20 h-14 w-14 text-gold-600/25 sm:h-16 sm:w-16" />
-        <SteampunkCorner className="pointer-events-none absolute bottom-2 left-2 z-20 h-10 w-10 text-gold-700/30 sm:h-12 sm:w-12" />
+        <CompassRose
+          className={`pointer-events-none absolute z-20 text-gold-600/20 ${
+            isFeatured
+              ? "right-4 top-4 h-16 w-16 sm:h-20 sm:w-20"
+              : "right-3 top-3 h-14 w-14 sm:h-16 sm:w-16"
+          }`}
+        />
+        <SteampunkCorner
+          className={`pointer-events-none absolute bottom-2 left-2 z-20 text-gold-700/25 ${
+            isFeatured ? "h-11 w-11 sm:h-14 sm:w-14" : "h-10 w-10 sm:h-12 sm:w-12"
+          }`}
+        />
 
         {showBadge && (
-          <div className="absolute left-3 top-3 z-[1000] flex items-center gap-2 rounded-full border border-gold-200/90 bg-cream-50/95 px-3 py-1.5 shadow-card backdrop-blur-sm">
-            <ChurchIcon className="h-4 w-4 shrink-0 text-burgundy-500" />
-            <span className="text-xs font-semibold tracking-wide text-graphite-700">
+          <div
+            className={`map-atlas-badge absolute left-3 top-3 z-[1000] flex items-center gap-2.5 rounded-full border bg-cream-50/95 shadow-card backdrop-blur-sm ${
+              isFeatured
+                ? "border-gold-300/90 px-4 py-2 shadow-premium"
+                : "border-gold-200/90 px-3 py-1.5"
+            }`}
+          >
+            <span
+              className={`flex shrink-0 items-center justify-center rounded-full bg-burgundy-50 text-burgundy-500 ${
+                isFeatured ? "h-8 w-8" : "h-7 w-7"
+              }`}
+            >
+              <ChurchIcon className={isFeatured ? "h-4 w-4" : "h-3.5 w-3.5"} />
+            </span>
+            <span
+              className={`font-semibold tracking-wide text-graphite-800 ${
+                isFeatured ? "text-sm" : "text-xs"
+              }`}
+            >
               {mappableCount} gyülekezet
             </span>
-            <MapPinIcon className="h-3.5 w-3.5 shrink-0 text-gold-600" />
+            <MapPinIcon
+              className={`shrink-0 text-gold-600 ${isFeatured ? "h-4 w-4" : "h-3.5 w-3.5"}`}
+            />
           </div>
         )}
 
         <div
-          className={`map-atlas-inner relative z-0 overflow-hidden rounded-xl border border-cream-300/80 ${mapHeightClass}`}
+          className={`map-atlas-inner relative z-0 overflow-hidden rounded-2xl border border-cream-300/80 ${heightClass}`}
         >
           <div
-            className="pointer-events-none absolute inset-0 z-[500] opacity-[0.18]"
+            className="pointer-events-none absolute inset-0 z-[500] opacity-[0.16]"
             style={{
               backgroundImage:
                 "linear-gradient(rgba(110,20,35,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(110,20,35,0.07) 1px, transparent 1px)",
@@ -124,9 +171,13 @@ export function MapPreview({
             }}
             aria-hidden
           />
+          <div className="map-atlas-vignette pointer-events-none absolute inset-0 z-[550]" aria-hidden />
           <CongregationMapClient
             congregations={congregations}
             className="relative z-0 h-full w-full"
+            boundsPad={boundsPad}
+            fitPadding={fitPadding}
+            maxZoom={isFeatured ? 10 : 11}
           />
         </div>
       </div>

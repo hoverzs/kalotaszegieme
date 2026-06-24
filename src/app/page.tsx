@@ -57,8 +57,35 @@ export default async function HomePage() {
         }}
       />
 
+      {/* Gyülekezetek térképe – közvetlenül a hero alatt */}
+      <section className="relative z-10 border-b border-cream-300/60 bg-gradient-to-b from-cream-50 to-cream-100/80 py-12 sm:py-16 lg:py-20">
+        <div className="mx-auto w-full max-w-[92rem] px-5 sm:px-8 lg:px-10">
+          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,0.36fr)_minmax(0,0.64fr)] lg:gap-10 xl:gap-14">
+            <div className="lg:pr-4">
+              <span className="eyebrow mb-3">
+                <span className="h-px w-6 bg-gold-500" />
+                Kalotaszeg
+              </span>
+              <h2 className="text-3xl font-semibold leading-tight text-graphite-900 sm:text-4xl lg:text-[2.65rem]">
+                Térkép
+              </h2>
+              <p className="mt-4 max-w-md text-base leading-relaxed text-graphite-600">
+                Fedezze fel a Kalotaszegi Református Egyházmegye gyülekezeteit térképen.
+              </p>
+              <div className="mt-8">
+                <Link href="/terkep" className="btn-primary map-section-cta">
+                  Részletes térkép megnyitása
+                  <ArrowRightIcon className="h-4 w-4" />
+                </Link>
+              </div>
+            </div>
+            <MapPreview congregations={congregations} variant="featured" />
+          </div>
+        </div>
+      </section>
+
       {/* Gyors elérés – alacsony, keskeny sáv */}
-      <section className="relative z-20 -mt-12 sm:-mt-14">
+      <section className="relative z-20 pt-2 sm:pt-4">
         <div className="container-page">
           <div className="grid grid-cols-3 gap-2 rounded-2xl border border-cream-300/70 bg-white/95 p-3 shadow-premium backdrop-blur sm:gap-3 sm:p-4 lg:grid-cols-5">
             {quickAccess.map((item) => (
@@ -84,33 +111,6 @@ export default async function HomePage() {
       <DigitalDevotionsSection />
 
       <LatestTudositasokSection />
-
-      {/* Gyülekezetek a térképen */}
-      <section className="border-t border-cream-300/60 bg-cream-50 py-14 sm:py-16">
-        <div className="container-page">
-          <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center">
-            <div>
-              <span className="eyebrow mb-3">
-                <span className="h-px w-6 bg-gold-500" />
-                Kalotaszeg
-              </span>
-              <h2 className="text-3xl font-semibold leading-tight text-graphite-900 sm:text-4xl">
-                Térkép
-              </h2>
-              <p className="mt-5 max-w-lg text-base leading-relaxed text-graphite-600">
-                Fedezze fel a Kalotaszegi Református Egyházmegye gyülekezeteit térképen.
-              </p>
-              <div className="mt-7">
-                <Link href="/terkep" className="btn-primary">
-                  Részletes térkép megnyitása
-                  <ArrowRightIcon className="h-4 w-4" />
-                </Link>
-              </div>
-            </div>
-            <MapPreview congregations={congregations} />
-          </div>
-        </div>
-      </section>
 
       {/* Templomgaléria – rövidített (3 kép) */}
       <section className="container-page py-14 sm:py-16">
