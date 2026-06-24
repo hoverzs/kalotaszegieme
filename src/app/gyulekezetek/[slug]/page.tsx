@@ -8,7 +8,9 @@ import {
 } from "@/lib/content/congregations";
 import { getNewsByCongregation } from "@/lib/content/news";
 import { congregationImage } from "@/data/images";
+import { getCongregationHistory } from "@/lib/gyulekezetek";
 import { NewsCard } from "@/components/NewsCard";
+import { MarkdownContent } from "@/components/MarkdownContent";
 import {
   ArrowLeftIcon,
   ClockIcon,
@@ -93,6 +95,7 @@ export default async function CongregationDetailPage({
   if (!c) notFound();
 
   const relatedNews = await getNewsByCongregation(c.slug);
+  const history = getCongregationHistory(c.slug);
   const photo = congregationImage(c.slug, c.image);
   const hasCoords = c.latitude !== null && c.longitude !== null;
 
@@ -167,12 +170,14 @@ export default async function CongregationDetailPage({
               ) : null}
             </div>
 
-            {/* Bemutatkozás */}
+            {/* Bemutatkozás / történet */}
             <div className="mt-12">
               <h2 className="mb-4 font-serif text-2xl font-semibold text-graphite-900">
-                {labels.description}
+                {history?.title ?? labels.description}
               </h2>
-              {isMissing(c.description) ? (
+              {history ? (
+                <MarkdownContent content={history.content} />
+              ) : isMissing(c.description) ? (
                 <p className="italic text-graphite-400">Adatok feltöltés alatt</p>
               ) : (
                 <p className="text-base leading-relaxed text-graphite-600">{c.description}</p>
