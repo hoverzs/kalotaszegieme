@@ -88,23 +88,23 @@ export function MapPreview({
   const heightClass =
     mapHeightClass ??
     (isFeatured
-      ? "h-[360px] sm:h-[460px] lg:h-[580px] xl:h-[620px]"
+      ? "h-[240px] sm:h-[300px] md:h-[340px] lg:h-[400px]"
       : "h-[300px] sm:h-[360px] lg:h-[420px]");
 
-  const fitPadding: [number, number] = isFeatured ? [72, 72] : [56, 56];
-  const boundsPad = isFeatured ? 0.14 : 0.1;
+  const fitPadding: [number, number] = isFeatured ? [48, 48] : [56, 56];
+  const boundsPad = isFeatured ? 0.12 : 0.1;
 
   return (
-    <div className={`map-atlas-card relative ${isFeatured ? "map-atlas-card--featured" : ""}`}>
+    <div className={`map-atlas-card relative w-full ${isFeatured ? "map-atlas-card--featured" : ""}`}>
       <div
         className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-gold-400/30 via-transparent to-burgundy-500/10 p-px"
         aria-hidden
       />
 
       <div
-        className={`relative overflow-hidden rounded-3xl border bg-gradient-to-br from-cream-50 via-cream-100 to-cream-200 shadow-premium ${
+        className={`relative w-full overflow-hidden rounded-2xl border bg-gradient-to-br from-cream-50 via-cream-100 to-cream-200 shadow-premium sm:rounded-3xl ${
           isFeatured
-            ? "border-gold-300/55 p-3 sm:p-4 lg:p-5"
+            ? "border-gold-300/55 p-2 sm:p-3"
             : "border-gold-300/45 p-2 sm:p-3"
         }`}
       >
@@ -133,10 +133,10 @@ export function MapPreview({
 
         {showBadge && (
           <div
-            className={`map-atlas-badge absolute left-3 top-3 z-[1000] flex items-center gap-2.5 rounded-full border bg-cream-50/95 shadow-card backdrop-blur-sm ${
+            className={`map-atlas-badge absolute z-[1000] flex items-center gap-2.5 rounded-full border bg-cream-50/95 shadow-card backdrop-blur-sm ${
               isFeatured
-                ? "border-gold-300/90 px-4 py-2 shadow-premium"
-                : "border-gold-200/90 px-3 py-1.5"
+                ? "bottom-12 left-3 border-gold-300/90 px-4 py-2 shadow-premium"
+                : "left-3 top-3 border-gold-200/90 px-3 py-1.5"
             }`}
           >
             <span
@@ -177,7 +177,7 @@ export function MapPreview({
             className="relative z-0 h-full w-full"
             boundsPad={boundsPad}
             fitPadding={fitPadding}
-            maxZoom={isFeatured ? 10 : 11}
+            maxZoom={isFeatured ? 11 : 11}
           />
         </div>
       </div>

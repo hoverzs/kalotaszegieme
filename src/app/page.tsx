@@ -58,28 +58,29 @@ export default async function HomePage() {
       />
 
       {/* Gyülekezetek térképe – közvetlenül a hero alatt */}
-      <section className="relative z-10 border-b border-cream-300/60 bg-gradient-to-b from-cream-50 to-cream-100/80 py-12 sm:py-16 lg:py-20">
-        <div className="mx-auto w-full max-w-[92rem] px-5 sm:px-8 lg:px-10">
-          <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-[minmax(0,0.36fr)_minmax(0,0.64fr)] lg:gap-10 xl:gap-14">
-            <div className="lg:pr-4">
-              <span className="eyebrow mb-3">
-                <span className="h-px w-6 bg-gold-500" />
-                Kalotaszeg
-              </span>
-              <h2 className="text-3xl font-semibold leading-tight text-graphite-900 sm:text-4xl lg:text-[2.65rem]">
-                Térkép
-              </h2>
-              <p className="mt-4 max-w-md text-base leading-relaxed text-graphite-600">
-                Fedezze fel a Kalotaszegi Református Egyházmegye gyülekezeteit térképen.
-              </p>
-              <div className="mt-8">
-                <Link href="/terkep" className="btn-primary map-section-cta">
-                  Részletes térkép megnyitása
-                  <ArrowRightIcon className="h-4 w-4" />
-                </Link>
-              </div>
+      <section className="relative z-10 border-b border-cream-300/60 bg-gradient-to-b from-cream-50 to-cream-100/80 py-8 sm:py-10 lg:py-12">
+        <div className="w-full px-3 sm:px-5 lg:px-8">
+          <MapPreview congregations={congregations} variant="featured" />
+        </div>
+
+        <div className="container-page mt-8 sm:mt-10 lg:mt-12">
+          <div className="mx-auto max-w-3xl text-center lg:mx-0 lg:max-w-2xl lg:text-left">
+            <span className="eyebrow mb-4">
+              <span className="h-px w-6 bg-gold-500" />
+              Kalotaszeg
+            </span>
+            <h2 className="text-4xl font-semibold leading-tight text-graphite-900 sm:text-[2.75rem] lg:text-5xl">
+              Térkép
+            </h2>
+            <p className="mt-5 text-lg leading-relaxed text-graphite-600 sm:text-xl">
+              Fedezze fel a Kalotaszegi Református Egyházmegye gyülekezeteit térképen.
+            </p>
+            <div className="mt-8 flex justify-center lg:justify-start">
+              <Link href="/terkep" className="btn-primary map-section-cta px-8 py-3.5 text-base">
+                Részletes térkép megnyitása
+                <ArrowRightIcon className="h-4 w-4" />
+              </Link>
             </div>
-            <MapPreview congregations={congregations} variant="featured" />
           </div>
         </div>
       </section>
