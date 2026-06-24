@@ -91,37 +91,3 @@ export async function getDailyDevotion(): Promise<Devotion> {
     return todayDevotion;
   }
 }
-
-/** Néhány korábbi áhítat előnézet az Áhítatok oldalhoz. */
-export const recentDevotions: Devotion[] = [
-  todayDevotion,
-  {
-    date: "2026-06-10",
-    reference: "Filippi 4,4",
-    verse: "Örüljetek az Úrban mindenkor; ismét mondom, örüljetek.",
-    thought:
-      "Az öröm, amelyről Pál ír, nem a körülményektől függ, hanem az Úrban gyökerezik. Ez az öröm a hit gyümölcse, amely a nehézségek között is megmarad.",
-    author: "ÁhítApp",
-    appUrl: "https://www.ahitapp.ro",
-  },
-  {
-    date: "2026-06-09",
-    reference: "Ézsaiás 40,31",
-    verse:
-      "De akik az Úrban bíznak, erejük megújul, szárnyra kelnek, mint a sasok.",
-    thought:
-      "A várakozás nem tétlenség, hanem bizalom. Aki az Úrra figyel, új erőt kap a mindennapok feladataihoz és a hosszú úthoz egyaránt.",
-    author: "ÁhítApp",
-    appUrl: "https://www.ahitapp.ro",
-  },
-  {
-    date: "2026-06-08",
-    reference: "Máté 11,28",
-    verse:
-      "Jöjjetek énhozzám mindnyájan, akik megfáradtatok, és én megnyugosztlak titeket.",
-    thought:
-      "A hívás ma is szól: a terheinkkel együtt jöhetünk. Krisztusnál nem teljesítményt, hanem nyugalmat találunk.",
-    author: "ÁhítApp",
-    appUrl: "https://www.ahitapp.ro",
-  },
-];

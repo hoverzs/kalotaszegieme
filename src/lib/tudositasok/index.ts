@@ -77,6 +77,26 @@ export function getTudositasBySlug(slug: string): Tudositas | null {
   return parseFile(filename);
 }
 
+function normalizeLocation(value: string): string {
+  return value
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/\p{M}/gu, "")
+    .trim();
+}
+
+/** Település / helyszín alapján kapcsolódó tudósítások (gyülekezeti oldalhoz). */
+export function getTudositasokByLocation(settlement: string): TudositasSummary[] {
+  const target = normalizeLocation(settlement);
+  if (!target) return [];
+
+  return getAllTudositasok().filter((item) => {
+    if (!item.location) return false;
+    const loc = normalizeLocation(item.location);
+    return loc === target || loc.includes(target) || target.includes(loc);
+  });
+}
+
 /** Statikus útvonalgeneráláshoz. */
 export function getAllTudositasSlugs(): string[] {
   if (!fs.existsSync(CONTENT_DIR)) return [];

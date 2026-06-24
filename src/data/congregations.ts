@@ -10,9 +10,8 @@ import type { Congregation } from "./types";
  *   alatt” feliratot jelenít meg.
  * - A megadott valós elérhetőségek (lelkipásztor, telefon/mobil/vezetékes,
  *   e-mail, cím, lélekszám) a megfelelő mezőkbe kerültek.
- * - A `latitude`/`longitude` mezők a települések megközelítő (publikus)
- *   központi koordinátái, hogy a térkép-előnézet működjön. Ezek a valós
- *   adatfeltöltéskor pontosíthatók.
+ * - A `latitude`/`longitude` mezők a templom helyét jelölik (ahol ismert),
+ *   egyébként megközelítő településközponti koordináták.
  * - A `description` csak ott van kitöltve, ahol közismert, tényszerű
  *   információ áll rendelkezésre; egyébként üres.
  *
@@ -37,8 +36,8 @@ export const seedCongregations: Congregation[] = [
     name: "Bánffyhunyadi Református Egyházközség",
     settlement: "Bánffyhunyad",
     romanianName: "Huedin",
-    latitude: 46.8717,
-    longitude: 23.0411,
+    latitude: 46.86426091931298,
+    longitude: 23.02574762697205,
     ...EMPTY,
     pastor: "Jakab Mihály Gyula",
     address: "Huedin, P-ța Republicii nr. 28, 405400",

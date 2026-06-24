@@ -6,10 +6,10 @@ import {
   getAllCongregationSlugs,
   getCongregationBySlug,
 } from "@/lib/content/congregations";
-import { getNewsByCongregation } from "@/lib/content/news";
 import { congregationImage } from "@/data/images";
 import { getCongregationHistory } from "@/lib/gyulekezetek";
-import { NewsCard } from "@/components/NewsCard";
+import { getTudositasokByLocation } from "@/lib/tudositasok";
+import { TudositasCard } from "@/components/TudositasCard";
 import { MarkdownContent } from "@/components/MarkdownContent";
 import {
   ArrowLeftIcon,
@@ -94,7 +94,7 @@ export default async function CongregationDetailPage({
   const c = await getCongregationBySlug(params.slug);
   if (!c) notFound();
 
-  const relatedNews = await getNewsByCongregation(c.slug);
+  const relatedTudositasok = getTudositasokByLocation(c.settlement);
   const history = getCongregationHistory(c.slug);
   const photo = congregationImage(c.slug, c.image);
   const hasCoords = c.latitude !== null && c.longitude !== null;
@@ -207,15 +207,15 @@ export default async function CongregationDetailPage({
               )}
             </div>
 
-            {/* Kapcsolódó hírek (ha van) */}
-            {relatedNews.length > 0 && (
+            {/* Kapcsolódó tudósítások (ha van) */}
+            {relatedTudositasok.length > 0 && (
               <div className="mt-12">
                 <h2 className="mb-5 font-serif text-2xl font-semibold text-graphite-900">
-                  Kapcsolódó hírek
+                  Kapcsolódó tudósítások
                 </h2>
                 <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                  {relatedNews.map((n) => (
-                    <NewsCard key={n.id} item={n} />
+                  {relatedTudositasok.map((item) => (
+                    <TudositasCard key={item.slug} item={item} />
                   ))}
                 </div>
               </div>
