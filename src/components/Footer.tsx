@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { allNav, siteConfig, telHref } from "@/lib/site";
 import { Logo } from "./Logo";
-import { ArrowRightIcon, ExternalLinkIcon, MailIcon, MapPinIcon, PhoneIcon } from "./Icons";
+import { ExternalLinkIcon, MailIcon, MapPinIcon, PhoneIcon } from "./Icons";
 
 // Fontos linkek a láblécben (a Főoldal nélkül).
 const footerLinks = allNav.slice(1, 9);
@@ -10,7 +10,7 @@ export function Footer() {
   return (
     <footer className="mt-16 bg-graphite-900 text-cream-200">
       <div className="motif-divider" />
-      <div className="container-page grid grid-cols-1 gap-8 py-10 md:grid-cols-2 lg:grid-cols-4">
+      <div className="container-page grid grid-cols-1 gap-8 py-10 md:grid-cols-2 lg:grid-cols-3">
         {/* Márka + jelmondat */}
         <div>
           <Logo variant="light" />
@@ -72,35 +72,6 @@ export function Footer() {
               </a>
             </li>
           </ul>
-        </div>
-
-        {/* Hírlevél – kompakt */}
-        <div>
-          <h3 className="mb-4 text-sm font-semibold uppercase tracking-widest2 text-gold-400">
-            Hírlevél
-          </h3>
-          <form
-            className="flex gap-2"
-            // Statikus prototípus: a feliratkozás később köthető be (pl. Supabase / e-mail szolgáltató).
-            aria-label="Hírlevél feliratkozás"
-          >
-            <input
-              type="email"
-              required
-              placeholder="E-mail cím"
-              className="w-full rounded-full border border-graphite-600 bg-graphite-800 px-4 py-2.5 text-sm text-cream-50 placeholder:text-cream-200/40 focus:border-gold-400 focus:outline-none"
-            />
-            <button
-              type="submit"
-              className="inline-flex shrink-0 items-center justify-center rounded-full bg-gold-500 px-4 py-2.5 text-sm font-medium text-graphite-900 transition-colors hover:bg-gold-400"
-              aria-label="Feliratkozom"
-            >
-              <ArrowRightIcon className="h-4 w-4" />
-            </button>
-          </form>
-          <p className="mt-2.5 text-xs text-cream-200/40">
-            A funkció a végleges verzióban lesz aktív.
-          </p>
         </div>
       </div>
 
