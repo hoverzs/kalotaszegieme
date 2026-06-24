@@ -46,7 +46,7 @@ export function Hero({
   return (
     <section
       className={`relative isolate flex w-full flex-col overflow-hidden ${
-        isFull ? "min-h-[56vh] lg:min-h-[62vh]" : "min-h-[44vh] justify-center"
+        isFull ? "min-h-[46vh] lg:min-h-[50vh]" : "min-h-[44vh] justify-center"
       }`}
     >
       <Image
@@ -55,7 +55,7 @@ export function Hero({
         fill
         priority
         sizes="100vw"
-        className="object-cover"
+        className={`object-cover ${isFull ? "object-[center_42%]" : "object-center"}`}
       />
       <div className="absolute inset-0 bg-hero-overlay" />
       <div className="pointer-events-none absolute inset-0 ring-1 ring-inset ring-gold-400/10" />
@@ -63,7 +63,7 @@ export function Hero({
       <div className="relative z-10 flex flex-1 flex-col">
         {hasTopBanner && (
           <aside className="w-full border-b border-cream-50/10 bg-graphite-900/55 backdrop-blur-md">
-            <div className="container-page py-3 sm:py-4">
+            <div className="container-page py-2.5 sm:py-3">
               <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:gap-8 xl:gap-12">
                 <div className="shrink-0 lg:max-w-md xl:max-w-lg">
                   {sidePanel.eyebrow && (
@@ -86,12 +86,12 @@ export function Hero({
 
         <div
           className={`container-page flex flex-1 flex-col justify-end ${
-            hasTopBanner ? "pb-12 pt-6 sm:pb-14 sm:pt-8" : "justify-center py-20"
+            hasTopBanner ? "pb-8 pt-4 sm:pb-10 sm:pt-5" : "justify-center py-20"
           }`}
         >
           <div className={`max-w-3xl ${isFull ? "animate-fade-up" : ""}`}>
             {showLogo && (
-              <Link href="/" className="mb-5 inline-block sm:mb-6" aria-label="Főoldal">
+              <Link href="/" className="mb-4 inline-block sm:mb-5" aria-label="Főoldal">
                 <Image
                   src={localImages.egyhazmegyeLogo}
                   alt=""
@@ -99,7 +99,7 @@ export function Hero({
                   height={512}
                   unoptimized
                   aria-hidden
-                  className="h-28 w-28 rounded-full object-cover drop-shadow-lg sm:h-36 sm:w-36 md:h-44 md:w-44"
+                  className="h-24 w-24 rounded-full object-cover drop-shadow-lg sm:h-32 sm:w-32 md:h-36 md:w-36"
                 />
               </Link>
             )}
@@ -111,7 +111,7 @@ export function Hero({
             )}
             <h1
               className={`font-serif font-semibold leading-[1.05] text-cream-50 ${
-                isFull ? "text-4xl sm:text-5xl lg:text-6xl" : "text-4xl sm:text-5xl"
+                isFull ? "text-3xl sm:text-4xl lg:text-5xl" : "text-4xl sm:text-5xl"
               }`}
             >
               {title}
@@ -127,7 +127,7 @@ export function Hero({
             )}
 
             {(primaryCta || secondaryCta) && (
-              <div className="mt-7 flex flex-wrap items-center gap-4">
+              <div className="mt-5 flex flex-wrap items-center gap-4">
                 {primaryCta && (
                   <Link href={primaryCta.href} className="btn-primary">
                     {primaryCta.label}

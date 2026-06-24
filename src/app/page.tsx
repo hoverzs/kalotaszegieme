@@ -13,7 +13,6 @@ import {
   ChurchIcon,
   MapPinIcon,
   SunIcon,
-  ArrowRightIcon,
 } from "@/components/Icons";
 import { getCongregations } from "@/lib/content/congregations";
 import {
@@ -57,38 +56,9 @@ export default async function HomePage() {
         }}
       />
 
-      {/* Gyülekezetek térképe – közvetlenül a hero alatt */}
+      {/* Gyors elérés + gyülekezeti térkép – közvetlenül a hero alatt */}
       <section className="relative z-10 border-b border-cream-300/60 bg-gradient-to-b from-cream-50 to-cream-100/80 py-8 sm:py-10 lg:py-12">
-        <div className="w-full px-3 sm:px-5 lg:px-8">
-          <MapPreview congregations={congregations} variant="featured" />
-        </div>
-
-        <div className="container-page mt-8 sm:mt-10 lg:mt-12">
-          <span className="eyebrow mb-4">
-            <span className="h-px w-6 bg-gold-500" />
-            Kalotaszeg
-          </span>
-          <h2 className="text-4xl font-semibold leading-tight text-graphite-900 sm:text-[2.75rem] lg:text-5xl">
-            Térkép
-          </h2>
-          <div className="mt-5 flex flex-col items-center gap-5 sm:flex-row sm:items-center sm:justify-between sm:gap-8 lg:gap-12">
-            <p className="max-w-2xl flex-1 text-center text-lg leading-relaxed text-graphite-600 sm:text-left sm:text-xl">
-              Fedezze fel a Kalotaszegi Református Egyházmegye gyülekezeteit térképen.
-            </p>
-            <Link
-              href="/terkep"
-              className="btn-primary map-section-cta shrink-0 px-8 py-3.5 text-base"
-            >
-              Részletes térkép megnyitása
-              <ArrowRightIcon className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Gyors elérés – alacsony, keskeny sáv */}
-      <section className="relative z-20 pt-2 sm:pt-4">
-        <div className="container-page">
+        <div className="container-page mb-6 sm:mb-8">
           <div className="grid grid-cols-3 gap-2 rounded-2xl border border-cream-300/70 bg-white/95 p-3 shadow-premium backdrop-blur sm:gap-3 sm:p-4 lg:grid-cols-5">
             {quickAccess.map((item) => (
               <Link
@@ -103,6 +73,24 @@ export default async function HomePage() {
               </Link>
             ))}
           </div>
+        </div>
+
+        <div className="w-full px-3 sm:px-5 lg:px-8">
+          <MapPreview congregations={congregations} variant="featured" />
+        </div>
+
+        <div className="container-page mt-8 sm:mt-10 lg:mt-12">
+          <span className="eyebrow mb-4">
+            <span className="h-px w-6 bg-gold-500" />
+            Kalotaszeg
+          </span>
+          <h2 className="text-4xl font-semibold leading-tight text-graphite-900 sm:text-[2.75rem] lg:text-5xl">
+            Térkép
+          </h2>
+          <p className="mt-5 max-w-3xl text-lg leading-relaxed text-graphite-600 sm:text-xl">
+            A Kalotaszegi Református Egyházmegye gyülekezetei Bánffyhunyadtól Kolozsvár
+            környékéig rajzolják ki Kalotaszeg református közösségi hálózatát.
+          </p>
         </div>
       </section>
 

@@ -98,8 +98,94 @@
       inset 0 0 140px rgba(110, 20, 35, 0.07);
   }
 
+  .map-atlas-vignette--featured {
+    box-shadow:
+      inset 0 0 72px rgba(31, 33, 37, 0.16),
+      inset 0 0 120px rgba(110, 20, 35, 0.09),
+      inset 0 0 200px rgba(184, 146, 74, 0.05);
+  }
+
+  .map-atlas-warmth {
+    background: linear-gradient(
+      145deg,
+      rgba(251, 249, 244, 0.08) 0%,
+      rgba(184, 146, 74, 0.04) 45%,
+      rgba(110, 20, 35, 0.03) 100%
+    );
+  }
+
+  .map-atlas-warmth--featured {
+    background:
+      linear-gradient(180deg, rgba(251, 249, 244, 0.14) 0%, transparent 28%),
+      linear-gradient(145deg, rgba(251, 249, 244, 0.1) 0%, rgba(184, 146, 74, 0.05) 50%, rgba(110, 20, 35, 0.04) 100%);
+  }
+
+  .map-atlas-parchment-overlay {
+    opacity: 0.08;
+    background-image:
+      radial-gradient(circle at 30% 20%, rgba(251, 249, 244, 0.85), transparent 50%),
+      repeating-linear-gradient(
+        -3deg,
+        transparent,
+        transparent 5px,
+        rgba(184, 146, 74, 0.025) 5px,
+        rgba(184, 146, 74, 0.025) 6px
+      );
+  }
+
+  .map-atlas-parchment-overlay--featured {
+    opacity: 0.14;
+  }
+
   .map-atlas-card--featured {
     filter: drop-shadow(0 28px 48px rgba(110, 20, 35, 0.08));
+  }
+
+  .map-atlas-info-panel {
+    @apply rounded-2xl border px-4 py-3.5 shadow-premium backdrop-blur-md;
+    border-color: rgba(184, 146, 74, 0.42);
+    background: linear-gradient(
+      145deg,
+      rgba(251, 249, 244, 0.92) 0%,
+      rgba(245, 237, 220, 0.88) 100%
+    );
+    box-shadow:
+      0 1px 0 rgba(251, 249, 244, 0.75) inset,
+      0 10px 32px rgba(31, 33, 37, 0.1),
+      0 4px 14px rgba(110, 20, 35, 0.08);
+  }
+
+  .map-atlas-info-panel--compact {
+    @apply rounded-xl px-3.5 py-3;
+  }
+
+  .map-atlas-info-panel__eyebrow {
+    @apply text-[0.65rem] font-semibold uppercase tracking-widest2 text-gold-600;
+  }
+
+  .map-atlas-info-panel__title {
+    @apply mt-1.5 font-serif text-[0.95rem] font-semibold leading-snug text-graphite-900 sm:text-base;
+  }
+
+  .map-atlas-info-panel__cta {
+    @apply mt-3 w-full px-4 py-2.5 text-xs sm:text-sm;
+  }
+
+  .map-atlas-info-panel--compact .map-atlas-info-panel__cta {
+    @apply mt-2.5;
+  }
+
+  .map-atlas-badge {
+    border-color: rgba(184, 146, 74, 0.55);
+    background: linear-gradient(
+      135deg,
+      rgba(251, 249, 244, 0.96) 0%,
+      rgba(245, 237, 220, 0.92) 100%
+    );
+    box-shadow:
+      0 1px 0 rgba(251, 249, 244, 0.85) inset,
+      0 6px 20px rgba(31, 33, 37, 0.1),
+      0 2px 8px rgba(110, 20, 35, 0.08);
   }
 
   .map-section-cta {
@@ -120,6 +206,10 @@
 
   .map-atlas-inner .leaflet-tile-pane {
     filter: sepia(0.22) saturate(0.82) brightness(1.04) contrast(0.92);
+  }
+
+  .map-atlas-card--featured .map-atlas-inner .leaflet-tile-pane {
+    filter: sepia(0.3) saturate(0.76) brightness(1.02) contrast(0.9) hue-rotate(-3deg);
   }
 
   .map-atlas-inner .leaflet-control-attribution {
@@ -151,27 +241,28 @@
 
   .congregation-map-marker__core {
     display: block;
-    width: 20px;
-    height: 20px;
+    width: 21px;
+    height: 21px;
     border-radius: 9999px;
-    background: #6e1423;
+    background: radial-gradient(circle at 35% 30%, #8a1a2c, #6e1423 65%);
     border: 2px solid #fbf9f4;
     box-shadow:
       0 0 0 1px #b8924a,
-      0 0 10px rgba(184, 146, 74, 0.35),
-      0 4px 14px rgba(110, 20, 35, 0.38);
+      0 0 12px rgba(184, 146, 74, 0.42),
+      0 4px 16px rgba(110, 20, 35, 0.4);
     transition:
-      transform 0.25s ease,
-      box-shadow 0.25s ease;
+      transform 0.28s ease,
+      box-shadow 0.28s ease;
   }
 
   .congregation-map-marker:hover .congregation-map-marker__core {
-    transform: scale(1.14);
+    transform: scale(1.18);
     box-shadow:
-      0 0 0 1px #c49f52,
-      0 0 16px rgba(184, 146, 74, 0.5),
-      0 6px 18px rgba(110, 20, 35, 0.45);
-    animation: map-marker-pulse 2s ease-in-out infinite;
+      0 0 0 1.5px #c49f52,
+      0 0 18px rgba(184, 146, 74, 0.58),
+      0 0 28px rgba(184, 146, 74, 0.22),
+      0 6px 20px rgba(110, 20, 35, 0.48);
+    animation: map-marker-pulse 2.4s ease-in-out infinite;
   }
 
   @keyframes map-marker-pulse {
@@ -198,33 +289,68 @@
     background: linear-gradient(#6e1423, #5a101c);
   }
 
+  .leaflet-popup.congregation-map-popup {
+    margin-bottom: 6px;
+  }
+
   .leaflet-popup.congregation-map-popup .leaflet-popup-content-wrapper {
-    @apply rounded-xl border border-gold-200/80 bg-cream-50 px-0 py-0 shadow-card;
+    @apply rounded-xl border px-0 py-0;
+    border-color: rgba(184, 146, 74, 0.48);
+    background: linear-gradient(
+      165deg,
+      rgba(251, 249, 244, 0.98) 0%,
+      rgba(245, 237, 220, 0.96) 100%
+    );
+    backdrop-filter: blur(10px);
+    box-shadow:
+      0 1px 0 rgba(251, 249, 244, 0.9) inset,
+      0 14px 36px rgba(31, 33, 37, 0.14),
+      0 4px 12px rgba(110, 20, 35, 0.1);
   }
 
   .leaflet-popup.congregation-map-popup .leaflet-popup-content {
     margin: 0;
-    min-width: 180px;
+    min-width: 188px;
   }
 
   .leaflet-popup.congregation-map-popup .leaflet-popup-tip {
-    @apply bg-cream-50;
+    background: rgba(251, 249, 244, 0.98);
+    border: 1px solid rgba(184, 146, 74, 0.35);
     box-shadow: none;
   }
 
   .congregation-map-popup__inner {
-    @apply px-4 py-3;
+    @apply px-4 py-3.5;
+    position: relative;
+  }
+
+  .congregation-map-popup__inner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #b8924a 20%, #6e1423 50%, #b8924a 80%, transparent);
+    opacity: 0.55;
+    border-radius: 9999px;
   }
 
   .congregation-map-popup__title {
-    @apply font-serif text-sm font-semibold leading-snug text-graphite-900;
+    @apply pt-1 font-serif text-sm font-semibold leading-snug text-graphite-900;
   }
 
   .congregation-map-popup__settlement {
-    @apply mt-1 text-xs text-graphite-500;
+    @apply mt-1 text-xs tracking-wide text-graphite-500;
   }
 
   .congregation-map-popup__link {
-    @apply mt-3 inline-flex text-xs font-semibold text-burgundy-500 transition-colors hover:text-burgundy-700;
+    @apply mt-3 inline-flex items-center gap-1 text-xs font-semibold text-burgundy-500 transition-colors hover:text-burgundy-700;
+  }
+
+  .congregation-map-popup__link::after {
+    content: "→";
+    font-size: 0.85em;
+    opacity: 0.75;
   }
 }
