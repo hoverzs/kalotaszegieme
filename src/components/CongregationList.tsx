@@ -17,7 +17,10 @@ export function CongregationList({ congregations }: { congregations: Congregatio
         c.name.toLowerCase().includes(q) ||
         c.settlement.toLowerCase().includes(q) ||
         (c.romanianName ?? "").toLowerCase().includes(q) ||
-        c.pastor.toLowerCase().includes(q),
+        c.pastor.toLowerCase().includes(q) ||
+        c.phone.toLowerCase().includes(q) ||
+        c.email.toLowerCase().includes(q) ||
+        c.address.toLowerCase().includes(q),
     );
   }, [congregations, query]);
 

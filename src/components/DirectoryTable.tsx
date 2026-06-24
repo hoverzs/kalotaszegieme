@@ -19,6 +19,7 @@ export function DirectoryTable({ congregations }: { congregations: Congregation[
         c.settlement.toLowerCase().includes(q) ||
         (c.romanianName ?? "").toLowerCase().includes(q) ||
         c.pastor.toLowerCase().includes(q) ||
+        c.phone.toLowerCase().includes(q) ||
         c.email.toLowerCase().includes(q),
     );
   }, [congregations, query]);

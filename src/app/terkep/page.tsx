@@ -16,6 +16,7 @@ export default async function MapPage() {
   const sorted = [...congregations].sort((a, b) =>
     a.settlement.localeCompare(b.settlement, "hu"),
   );
+  const mappable = sorted.filter((c) => c.latitude !== null && c.longitude !== null);
 
   return (
     <>
@@ -33,7 +34,7 @@ export default async function MapPage() {
         />
 
         <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {sorted.map((c) => (
+          {mappable.map((c) => (
             <Link
               key={c.slug}
               href={`/gyulekezetek/${c.slug}`}
@@ -47,9 +48,7 @@ export default async function MapPage() {
                   {c.settlement}
                 </span>
                 <span className="block text-xs text-graphite-400">
-                  {c.latitude !== null && c.longitude !== null
-                    ? `${c.latitude.toFixed(4)}, ${c.longitude.toFixed(4)}`
-                    : "Koordináta feltöltés alatt"}
+                  {`${c.latitude!.toFixed(4)}, ${c.longitude!.toFixed(4)}`}
                 </span>
                 <span className="mt-1 inline-flex items-center gap-1 text-xs font-medium text-burgundy-500 opacity-0 transition-opacity group-hover:opacity-100">
                   Adatlap

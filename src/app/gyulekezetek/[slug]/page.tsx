@@ -8,11 +8,13 @@ import {
 } from "@/lib/content/congregations";
 import { congregationImage } from "@/data/images";
 import { getCongregationHistory } from "@/lib/gyulekezetek";
+import { getTwinParish } from "@/lib/congregations/twinParishes";
 import { getTudositasokByLocation } from "@/lib/tudositasok";
 import { TudositasCard } from "@/components/TudositasCard";
 import { MarkdownContent } from "@/components/MarkdownContent";
 import {
   ArrowLeftIcon,
+  ArrowRightIcon,
   ClockIcon,
   MailIcon,
   MapPinIcon,
@@ -98,6 +100,7 @@ export default async function CongregationDetailPage({
 
   const relatedTudositasok = getTudositasokByLocation(c.settlement);
   const history = getCongregationHistory(c.slug);
+  const twinParish = getTwinParish(c.slug);
   const photo = congregationImage(c.slug, c.image);
   const hasCoords = c.latitude !== null && c.longitude !== null;
 
@@ -261,6 +264,25 @@ export default async function CongregationDetailPage({
                 ) : null}
               </ul>
             </div>
+
+            {twinParish ? (
+              <div className="rounded-2xl border border-gold-200/70 bg-gradient-to-br from-cream-50 to-cream-100/80 p-6 shadow-card">
+                <p className="text-xs font-semibold uppercase tracking-wide text-gold-600">
+                  Társ gyülekezet
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-graphite-600">
+                  Ugyanahhoz az egyházközséghez tartozó település, közös lelkipásztorral és
+                  elérhetőségekkel.
+                </p>
+                <Link
+                  href={`/gyulekezetek/${twinParish.slug}`}
+                  className="btn-ghost mt-4 w-full justify-center"
+                >
+                  {twinParish.settlement} adatlapja
+                  <ArrowRightIcon className="h-4 w-4" />
+                </Link>
+              </div>
+            ) : null}
 
             <Link
               href="/gyulekezetek"

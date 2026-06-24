@@ -85,6 +85,30 @@ export function CongregationEditor({ congregation }: { congregation: Congregatio
           E-mail
           <input className={fieldClass} value={form.email} onChange={(e) => update("email", e.target.value)} />
         </label>
+        <label className="block text-sm font-medium text-graphite-700">
+          Szélesség (latitude)
+          <input
+            type="number"
+            step="any"
+            className={fieldClass}
+            value={form.latitude ?? ""}
+            onChange={(e) =>
+              update("latitude", e.target.value === "" ? null : Number(e.target.value))
+            }
+          />
+        </label>
+        <label className="block text-sm font-medium text-graphite-700">
+          Hosszúság (longitude)
+          <input
+            type="number"
+            step="any"
+            className={fieldClass}
+            value={form.longitude ?? ""}
+            onChange={(e) =>
+              update("longitude", e.target.value === "" ? null : Number(e.target.value))
+            }
+          />
+        </label>
         <label className="block text-sm font-medium text-graphite-700 md:col-span-2">
           Istentiszteleti idő
           <input
